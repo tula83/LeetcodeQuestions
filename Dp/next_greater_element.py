@@ -1,3 +1,4 @@
+# this contains  variations of questions solved with next_greater element approach
 def  next_greater_element(arr):
     s=[]
     n=len(arr)
@@ -16,8 +17,10 @@ print(next_greater_element([4,1,2]))
 
 
 # for  finding next greater element of first array in second array
+
+
 class Solution:
-    def nextGreaterElement(self, nums1: List[int], nums2: List[int]) -> List[int]:
+    def nextGreaterElement(self, nums1, nums2):
         n=len(nums1)
         s=[]
         mp={}
@@ -43,4 +46,32 @@ class Solution:
             
 
         
+# daily temperature
+# Given an array of integers temperatures represents the daily temperatures,
+# return an array answer such that answer[i] is the number 
+# of days you have to wait after the ith day to get a warmer temperature. 
+# If there is no future day for which this is possible, keep answer[i] == 0 instead.
+    
+
+class Solution:
+    def dailyTemperatures(self, arr):
+        n=len(arr)
+        s=[]
+
+        if not arr:
+            return []
+        
+        for i in range(n):
+            while s and s[-1].get('value') < arr[i]:
+                d=s.pop()
+                index=d.get('index')
+                arr[index]=i-index
+            s.append({'index':i,'value':arr[i]})
+
+        while s:
+            d=s.pop()
+            arr[d.get('index')]=0
+        return  arr
+
+
 
