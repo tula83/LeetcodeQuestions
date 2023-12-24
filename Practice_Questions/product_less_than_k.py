@@ -42,8 +42,20 @@ def Subarray_sum_equals_k(nums,k):
     
     return count
 
-print(Subarray_sum_equals_k([1,1,1],2))
+#print(Subarray_sum_equals_k([1,1,1],2))
 
 
+# maximum subarray sum
+def maxSubArray(nums):
+        curr_sum,till=0,nums[0]
 
+        for item in nums:
+            curr_sum+=item
+            till=max(till,curr_sum)
+            
+            if curr_sum < 0:
+                curr_sum=0
+        return  till
+
+print(maxSubArray([-1,1,-3,4]))
 
