@@ -1,6 +1,6 @@
 #finding anagrams in two string
 class Solution:
-    def findAnagrams(self, s: str, p: str) -> List[int]:
+    def findAnagrams(self, s: str, p: str):
         if len(s)<len(p):
             return  []
         
