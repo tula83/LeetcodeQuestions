@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+         .container{
+            text-wrap: nowrap;
+            width: 300px;
+            overflow: hidden;
+            text-overflow: ellipsis;
+             
+         }
+         .extended{
+            margin-left:-20px;
+            
+         }
+    </style>
+</head>
+<body>
+   <div class="container">This is some long text that will be condensed with an ellipsis when extended to the left.</div>
+    <div class="container extended">
+        This is some long text that will be condensed with an ellipsis when extended to the left.
+    </div>
+</body>
+</html>

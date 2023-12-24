@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    body {
+      height: 150vh; /* Ensure enough scrollable height */
+      margin: 0;
+      font-family: Arial, sans-serif;
+    }
+
+    .content {
+      opacity: 0;
+      transition: opacity 0.5s;
+    }
+
+    .content.visible {
+      opacity: 1;
+    }
+
+    p {
+      margin: 0;
+    }
+  </style>
+  <title>Scroll Visible Content</title>
+</head>
+<body>
+
+  <p>Scroll down to reveal the hidden content.</p>
+  <div id="content" class="content">
+    This content becomes visible on scroll.
+  </div>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      const contentElement = document.getElementById('content');
+
+      function handleScroll() {
+        const scrollPosition = window.scrollY + window.innerHeight;
+        const elementPosition = contentElement.offsetTop;
+
+        if (scrollPosition > elementPosition) {
+          contentElement.classList.add('visible');
+          // Remove the event listener once content is visible
+          window.removeEventListener('scroll', handleScroll);
+        }
+      }
+
+      // Attach the event listener when the content is loaded
+      window.addEventListener('scroll', handleScroll);
+    });
+  </script>
+  <h2>tularam</h2>
+</body>
+</html>

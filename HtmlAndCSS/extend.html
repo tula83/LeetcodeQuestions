@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            display: flex;
+            height: 100vh;
+        }
+
+        #folder-explorer,
+        #file-editor {
+            box-sizing: border-box;
+            overflow: auto;
+            height: 100%;
+        }
+
+        #splitter {
+            cursor:col-resize;
+            width: 10px;
+            background-color: #ddd;
+            height: 100%;
+        }
+    </style>
+    <title>Resizable Split</title>
+</head>
+<body>
+    <div id="folder-explorer">
+        <h2>Folder Explorer</h2>
+        <!-- Add your folder explorer content here -->
+    </div>
+    <div id="splitter"></div>
+    <div id="file-editor">
+        <h2>File Editor</h2>
+        <!-- Add your file editor content here -->
+    </div>
+
+    <script>
+        const splitter = document.getElementById('splitter');
+        const folderExplorer = document.getElementById('folder-explorer');
+        const fileEditor = document.getElementById('file-editor');
+        let isResizing = false;
+
+        splitter.addEventListener('mousedown', function (e) {
+            isResizing = true;
+
+            function handleMouseMove(event) {
+                if (isResizing) {
+                    const mouseX = event.clientX;
+                    const containerWidth = window.innerWidth;
+                    const splitterWidth = splitter.offsetWidth;
+
+                    const newFolderExplorerWidth = mouseX;
+                    folderExplorer.style.width = `${newFolderExplorerWidth}px`;
+
+                    const newFileEditorWidth = containerWidth - mouseX - splitterWidth;
+                    fileEditor.style.width = `${newFileEditorWidth}px`;
+                }
+            }
+
+            function handleMouseUp() {
+                isResizing = false;
+                document.removeEventListener('mousemove', handleMouseMove);
+                document.removeEventListener('mouseup', handleMouseUp);
+            }
+
+            document.addEventListener('mousemove', handleMouseMove);
+            document.addEventListener('mouseup', handleMouseUp);
+        });
+    </script>
+</body>
+</html>
