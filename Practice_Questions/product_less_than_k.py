@@ -57,5 +57,46 @@ def maxSubArray(nums):
                 curr_sum=0
         return  till
 
-print(maxSubArray([-1,1,-3,4]))
+#print(maxSubArray([-1,1,-3,4]))
 
+# good subarray
+# Given an integer array nums and an integer k, return true if nums has a good subarray or false otherwise.
+# A good subarray is a subarray where:
+# its length is at least two, and
+# the sum of the elements of the subarray is a multiple of k.
+
+
+
+
+# intervals between identical elements
+import collections
+def getDistances(arr):
+    n=len(arr)
+    lookup=collections.defaultdict(list)
+
+    for i , x in enumerate(arr):
+        lookup[x].append(i)
+
+    print(lookup)
+    
+    result=[0]*n
+
+    for idxs in lookup.values():
+        prefix=[0]
+
+        for i in idxs:
+            prefix.append(prefix[-1]+i)
+
+        print(prefix)
+
+        for i,idx in enumerate(idxs):
+            result[idx]=(idx*(i+1)-prefix[i+1])+ ( (prefix[len(idxs)]-prefix[i])-idx*(len(idxs)-i) )
+
+           
+
+            
+        
+    return result
+
+
+print(getDistances([2,1,3,1,2,3,3]))
