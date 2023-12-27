@@ -83,14 +83,14 @@ def subarrayDivByK(arr,k):
 import collections
 def count_bad_pairs(nums):
     n=len(nums)
-    result=n*(n-1)//2
+    result=n*(n-1)//2 # maximum it can have as such pairs
 
     cnt=collections.Counter()
     
     
     for i ,x in enumerate(nums):
         print(f'x - i : {x-i}')
-        result-=cnt[x-i]
+        result-=cnt[x-i] # cnt[x-i] stores the  count of  equality  i.e j-i == count[j]-count[i]
         cnt[x-i]+=1
         print(f"i: {i}, x: {x}, result: {result}, cnt: {cnt}")
     print(cnt)
