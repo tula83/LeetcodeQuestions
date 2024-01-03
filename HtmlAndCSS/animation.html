@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    @keyframes pulseBorderAnimation {
+      0%, 100% {
+        box-shadow: 0 0 0 0 rgba(243, 156, 18, 0.7);
+      }
+      25% {
+        box-shadow: 0 0 0 10px rgba(243, 156, 18, 0);
+      }
+      50% {
+        box-shadow: 0 0 0 20px rgba(243, 156, 18, 0);
+      }
+      75% {
+        box-shadow: 0 0 0 30px rgba(243, 156, 18, 0);
+      }
+    }
+
+    .pulsating-border-div {
+      position: relative;
+      display: inline-block;
+      padding: 20px;
+      background-color: #3498db;
+      color: #fff;
+      border-radius: 5px;
+      font-size: 16px;
+      animation: pulseBorderAnimation 2s infinite; /* Pulse effect for continuous animation */
+      animation-timing-function: linear;
+    }
+
+    .pulsating-border-div::before {
+      content: "";
+      position: absolute;
+      top: -10px;
+      left: -10px;
+      right: -10px;
+      bottom: -10px;
+      border: 2px solid rgba(243, 156, 18, 0);
+      border-radius: 7px;
+      animation: pulseBorderAnimation 2s infinite; /* Mirror the animation on the pseudo-element */
+    }
+  </style>
+</head>
+<body>
+
+<div class="pulsating-border-div">Content goes here</div>
+
+</body>
+</html>
